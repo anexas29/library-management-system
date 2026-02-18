@@ -11,6 +11,21 @@ function setDashboardLink() {
   link.href = role === "admin" ? "../admin_home.html" : "../user_home.html";
 }
 
+function renderLogoutButton() {
+  const nav = document.querySelector(".nav-links");
+  if (!nav || nav.querySelector(".logout-btn")) return;
+
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "btn btn-danger btn-sm logout-btn";
+  btn.textContent = "Logout";
+  btn.addEventListener("click", () => {
+    localStorage.clear();
+    window.location.href = "../login.html";
+  });
+  nav.appendChild(btn);
+}
+
 async function loadIssuedReport() {
   const msg = document.getElementById("msg");
   if (msg) msg.innerText = "";
@@ -47,4 +62,7 @@ async function loadFineReports() {
   });
 }
 
-window.addEventListener("DOMContentLoaded", setDashboardLink);
+window.addEventListener("DOMContentLoaded", () => {
+  setDashboardLink();
+  renderLogoutButton();
+});

@@ -7,6 +7,28 @@ function headers() {
   };
 }
 
+function setDashboardLink() {
+  const role = localStorage.getItem("role");
+  const link = document.querySelector(".nav-links a");
+  if (!link) return;
+  link.href = role === "admin" ? "../admin_home.html" : "../user_home.html";
+}
+
+function renderLogoutButton() {
+  const nav = document.querySelector(".nav-links");
+  if (!nav || nav.querySelector(".logout-btn")) return;
+
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "btn btn-danger btn-sm logout-btn";
+  btn.textContent = "Logout";
+  btn.addEventListener("click", () => {
+    localStorage.clear();
+    window.location.href = "../login.html";
+  });
+  nav.appendChild(btn);
+}
+
 async function addBook() {
   const mediaType = document.querySelector('input[name="media_type"]:checked')?.value || "book";
   const title = document.getElementById("title").value.trim();
@@ -127,3 +149,8 @@ async function manageUser() {
   const data = await res.json();
   msg.innerText = res.ok ? data.message : data.detail || "User management failed";
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+  setDashboardLink();
+  renderLogoutButton();
+});

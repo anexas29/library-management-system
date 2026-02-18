@@ -14,6 +14,21 @@ function setDashboardLink() {
   link.href = role === "admin" ? "../admin_home.html" : "../user_home.html";
 }
 
+function renderLogoutButton() {
+  const nav = document.querySelector(".nav-links");
+  if (!nav || nav.querySelector(".logout-btn")) return;
+
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "btn btn-danger btn-sm logout-btn";
+  btn.textContent = "Logout";
+  btn.addEventListener("click", () => {
+    localStorage.clear();
+    window.location.href = "../login.html";
+  });
+  nav.appendChild(btn);
+}
+
 function todayISO() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -225,6 +240,7 @@ async function loadOverdueReturns() {
 
 window.addEventListener("DOMContentLoaded", () => {
   setDashboardLink();
+  renderLogoutButton();
 
   const issueDate = document.getElementById("issue_date");
   const returnDate = document.getElementById("return_date");

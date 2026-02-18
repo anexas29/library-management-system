@@ -85,6 +85,21 @@ a:hover {
     background: #f5fffd;
 }
 
+.nav-links .btn-outline-primary {
+    color: var(--primary-strong);
+    background: #ffffff;
+    border: 1px solid #8fc4bc;
+    box-shadow: none;
+}
+
+.nav-links .btn-outline-primary:hover,
+.nav-links .btn-outline-primary:focus {
+    color: #0b4f4a;
+    background: #eefaf8;
+    border-color: #58a9a0;
+    box-shadow: none;
+}
+
 .panel,
 form,
 .card {
