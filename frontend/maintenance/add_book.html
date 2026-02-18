@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Book</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-light">
+<main class="container py-4">
+  <div class="topbar">
+    <h2 class="title fw-bold">Add Book</h2>
+    <div class="nav-links"><a class="btn btn-outline-primary btn-sm" href="../admin_home.html">Dashboard</a></div>
+  </div>
+  <section class="card shadow-sm border-0">
+    <div class="card-body">
+    <div class="inline d-flex gap-3 mb-3">
+      <label class="form-check-label"><input class="form-check-input me-1" type="radio" name="media_type" value="book" checked> Book</label>
+      <label class="form-check-label"><input class="form-check-input me-1" type="radio" name="media_type" value="movie"> Movie</label>
+    </div>
+    <input class="form-control mb-3" id="title" placeholder="Title">
+    <input class="form-control mb-3" id="author" placeholder="Author">
+    <input class="form-control mb-3" id="serial_no" placeholder="Serial No">
+    <input class="form-control mb-3" id="category" placeholder="Category">
+    <button class="btn btn-primary" onclick="addBook()">Add</button>
+    <p id="msg" class="mt-3 mb-0 text-danger"></p>
+    </div>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/maintenance.js"></script>
+</body>
+</html>
